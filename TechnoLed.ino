@@ -81,10 +81,10 @@ void messageReceived(const String &topic, const String &payload) {
     case '*':
       led_turn_rainbow(strip);
       break;
-    case 'I':
+    case '1':
       led_turn_all(strip, 0xFFFFFF);
       break;
-    case 'O':
+    case '0':
       led_turn_all(strip, (uint32_t) 0);
       break;
     default:
