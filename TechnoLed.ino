@@ -167,7 +167,6 @@ void setup() {
 
   // LEDs connection
   strip.begin();                  // INITIALIZE NeoPixel strip object (REQUIRED)
-  strip.setBrightness(255 * 0.2); // 70% as hardware value for brightness because of consumption
   led_ready(strip);
 
   // WiFi Connection
@@ -192,26 +191,9 @@ void setup() {
   Serial.printf("OTA Update ready on http://%s/update or curl -F 'image=@firmware.bin' http://%s/update\n", WiFi.localIP(), WiFi.localIP());
 
   Serial.print("\n");
-
-  // // LEDs connection
-  // FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
-  // for (unsigned int i=0; i<NUM_LEDS; ++i) {
-  //   leds[i] = CRGB(50, 50, 50);
-  // }
 }
 
 void loop() {
   httpServer.handleClient();
   mqttClient.loop();
-
-  // if (!mqttClient.connected()) {
-  //   wifiConnect();
-  // }
-
-  // publish a message roughly every second.
-  // if (millis() - lastMillis > 1000) {
-  //   lastMillis = millis();
-  //   mqttClient.publish(ledsTopic, "Hello");
-  //   mqttClistateTublish(ledsTopic, devices);
-  // }
 }
